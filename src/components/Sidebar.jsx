@@ -1,14 +1,15 @@
+
 import React from 'react';
 import assets, { userDummyData } from '../assets/assets';
 import { useNavigate } from 'react-router-dom';
 
-const Sidebar = ({ SelectedUser, setSelectedUser }) => {
+const Sidebar = ({ selectedUser, setSelectedUser }) => {
   const navigate = useNavigate();
 
   return (
     <div
       className={`bg-[#8185B2]/10 h-full p-5 rounded-r-xl overflow-y-scroll text-white ${
-        SelectedUser ? 'max-md:hidden' : ''
+        selectedUser ? 'max-md:hidden' : ''
       }`}
     >
       <div className="pb-5">
@@ -56,7 +57,7 @@ const Sidebar = ({ SelectedUser, setSelectedUser }) => {
             }}
             key={index}
             className={`relative flex items-center gap-3 mb-4 p-2 rounded-lg cursor-pointer max-sm:text-sm ${
-              SelectedUser?._id === user._id ? 'bg-[#414361]' : ''
+              selectedUser?._id === user._id ? 'bg-[#414361]' : ''
             }`}
           >
             <img

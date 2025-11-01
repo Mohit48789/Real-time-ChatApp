@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import HomePages from './pages/HomePages';
@@ -8,9 +9,9 @@ const App = () => {
   return (
     <div className="bg-[url('./src/assets/bgimage.svg')] bg-contain">
       <Routes>
-        <Route path='/' element={<HomePages />} />
-         <Route path='/login' element={<LoginPage/>} />
-          <Route path='/profile' element={<ProfilePage />} />
+        <Route path="/" element={<HomePages />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </div>
   );
