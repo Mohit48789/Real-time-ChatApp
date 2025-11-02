@@ -11,15 +11,14 @@ const LoginPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsDataSubmitted(true);
 
-    console.log({
-      fullName,
-      email,
-      password,
-      bio,
-      currState,
-    });
+
+    if(currState === "Sign up" && !isDataSubmitted){
+    setIsDataSubmitted(true);
+    return;
+    }
+
+    
   };
 
   return (
@@ -28,13 +27,14 @@ const LoginPage = () => {
       <img src={assets.logo_big} alt="Logo" className="w-[min(30vw,250px)]" />
 
       {/* --- Form --- */}
-      <form
+      <form 
         onSubmit={handleSubmit}
         className="border-2 border-gray-500 bg-white/10 text-white p-6 flex flex-col gap-6 rounded-lg shadow-lg min-w-[280px]"
       >
         {/* Header with Toggle */}
         <h2 className="font-medium text-2xl flex justify-between items-center">
           {currState}
+          
           <img
             src={assets.arrow_icon}
             alt="arrow"
@@ -122,6 +122,17 @@ const LoginPage = () => {
         <div className="flex items-center gap-2 text-sm text-gray-300">
           <input type="checkbox" required />
           <p>Agree to the terms of use & privacy policy.</p>
+        </div>
+        <div className='flex flex-col gap-2'>
+          {
+            currState==="Sign up" ? (
+              <p className="text-sm text-gray-600"> Already have an account ?<span  onClick={()=>{setCurrState("Login"); setIsDataSubmitted(flase)}}className='font-medium text-violet-500 cursor-pointer'> Login here
+                </span></p>
+            ) :(
+              <p className='text-sm text-gray-600'> Create an account <span onClick={()=>setCurrState("Sign up")}className='font-medium text-violet-500 cursor-pointer'>Click here</span></p>
+            )
+          }
+
         </div>
       </form>
     </div>
